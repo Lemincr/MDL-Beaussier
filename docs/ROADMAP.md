@@ -14,11 +14,11 @@
 - [x] Créer le modèle `Association` (`src/models/Association.ts`) avec la relation vers `User` (responsable)
 - [x] Créer le modèle `Event` (`src/models/Event.ts`) avec la relation vers `Association`
 - [x] Créer le modèle `Registration` (`src/models/Registration.ts`) avec les relations vers `User` et `Event`
-- [ ] Implémenter les contrôleurs et routes CRUD pour `Association` et `Event` (avec filtres / recherche)
-- [ ] Implémenter le contrôleur et les routes pour `Registration` :
+- [x] Implémenter les contrôleurs et routes CRUD pour `Association` et `Event` (avec filtres / recherche)
+- [x] Implémenter le contrôleur et les routes pour `Registration` :
   - Vérifier qu'un étudiant n'est pas déjà inscrit à l'événement (empêcher la double inscription)
   - Vérifier le nombre de places restantes avant d'accepter l'inscription (`capacity`)
-- [ ] Faire un petit script de seed pour avoir des fausses données en base pendant le dev
+- [x] Faire un petit script de seed pour avoir des fausses données en base pendant le dev
 
 ### 2. `@Antoninpampaloni` — Authentification, Droits & Back-office
 - [ ] Mettre en place la session (`express-session`) et le hash du mot de passe (`bcryptjs`) à l'inscription / connexion

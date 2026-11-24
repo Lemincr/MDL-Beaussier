@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import userRoutes from './routes/userRoutes';
+import associationRoutes from './routes/associationRoutes';
+import eventRoutes from './routes/eventRoutes';
+import registrationRoutes from './routes/registrationRoutes';
 
 const app = express();
 
@@ -12,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use('/', userRoutes);
+app.use('/', associationRoutes);
+app.use('/', eventRoutes);
+app.use('/', registrationRoutes);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({ error: 'Route non trouvée' });
