@@ -10,7 +10,7 @@ Ce document trace l'avancement du projet, les décisions techniques et la répar
 | :--- | :--- | :--- |
 | Membre 1 | Architecture, Back-end & Modèles Mongoose | `@Lemincr` |
 | Membre 2 | Authentification, Sécurité & Back-office | `@antoninpampaloni` |
-| Membre 3 | Front-end EJS / Bootstrap & Intégration | `@justeunbrider` |
+| Membre 3 | Front-end EJS / Bootstrap & Intégration | `@Justeunbrider83` |
 
 ---
 
