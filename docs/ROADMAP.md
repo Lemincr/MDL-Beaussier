@@ -11,9 +11,9 @@
 ## Répartition pour la suite (groupe de 3)
 
 ### 1. `@Lemincr` — Modèles Mongoose, CRUD Back-end & Règles métier
-- [ ] Créer le modèle `Association` (`src/models/Association.ts`) avec la relation vers `User` (responsable)
-- [ ] Créer le modèle `Event` (`src/models/Event.ts`) avec la relation vers `Association`
-- [ ] Créer le modèle `Registration` (`src/models/Registration.ts`) avec les relations vers `User` et `Event`
+- [x] Créer le modèle `Association` (`src/models/Association.ts`) avec la relation vers `User` (responsable)
+- [x] Créer le modèle `Event` (`src/models/Event.ts`) avec la relation vers `Association`
+- [x] Créer le modèle `Registration` (`src/models/Registration.ts`) avec les relations vers `User` et `Event`
 - [ ] Implémenter les contrôleurs et routes CRUD pour `Association` et `Event` (avec filtres / recherche)
 - [ ] Implémenter le contrôleur et les routes pour `Registration` :
   - Vérifier qu'un étudiant n'est pas déjà inscrit à l'événement (empêcher la double inscription)
