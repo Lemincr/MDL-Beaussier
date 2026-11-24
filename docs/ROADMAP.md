@@ -1,55 +1,41 @@
-# Feuille de Route (Roadmap) — MDL-Beaussier
+# Roadmap & Répartition des tâches
 
-Cette feuille de route découpe le développement du projet fil-rouge en jalons (milestones) et tâches actionnables, conformément aux critères d'évaluation.
+## Déjà fait (base reprise du TP `projet-mongo`)
+- [x] Initialisation du dépôt Git et config TypeScript / Express
+- [x] Connexion MongoDB (`src/config/database.ts`)
+- [x] Configuration Express + gestion des erreurs 404/500 (`src/app.ts`, `src/server.ts`)
+- [x] Modèle `User` + CRUD API de base avec `express-validator` (`src/models/User.ts`, `src/controllers/userController.ts`, `src/routes/userRoutes.ts`)
 
 ---
 
-## Jalon 1 : Initialisation & Cadrage
-- [x] Initialisation du dépôt Git et structure MVC du projet
-- [x] Configuration TypeScript (`tsconfig.json`), dépendances Express / Mongoose / EJS / Bootstrap
-- [x] Rédaction du Cahier des charges initial ([`docs/CAHIER_DES_CHARGES.md`](file:///home/antigravity/Lemincr/MDL-Beaussier/docs/CAHIER_DES_CHARGES.md))
-- [x] Mise en place de la feuille de route et du journal de suivi
+## Répartition pour la suite (groupe de 3)
 
-## Jalon 2 : Base de Données & Modèles Mongoose
-- [ ] Configuration de la connexion MongoDB (`src/config/database.ts`)
-- [ ] Modèle `User` (identité, email, mot de passe hashé, rôle)
-- [ ] Modèle `Association` (nom, description, contact, logo, statut, responsable)
-- [ ] Modèle `Event` (titre, description, date, lieu, capacité, catégorie, association organisatrice)
-- [ ] Modèle `Registration` (utilisateur, événement, date d'inscription, statut)
-- [ ] Script de seed (données de démonstration pour tester les relations)
+### 1. `@Lemincr` — Modèles Mongoose, CRUD Back-end & Règles métier
+- [ ] Créer le modèle `Association` (`src/models/Association.ts`) avec la relation vers `User` (responsable)
+- [ ] Créer le modèle `Event` (`src/models/Event.ts`) avec la relation vers `Association`
+- [ ] Créer le modèle `Registration` (`src/models/Registration.ts`) avec les relations vers `User` et `Event`
+- [ ] Implémenter les contrôleurs et routes CRUD pour `Association` et `Event` (avec filtres / recherche)
+- [ ] Implémenter le contrôleur et les routes pour `Registration` :
+  - Vérifier qu'un étudiant n'est pas déjà inscrit à l'événement (empêcher la double inscription)
+  - Vérifier le nombre de places restantes avant d'accepter l'inscription (`capacity`)
+- [ ] Faire un petit script de seed pour avoir des fausses données en base pendant le dev
 
-## Jalon 3 : Authentification, Sécurité & Gestion des Droits
-- [ ] Service et contrôleur d'authentification (inscription, connexion, déconnexion)
-- [ ] Gestion des sessions (`express-session` / `connect-mongo`)
-- [ ] Middleware `isAuthenticated` (protection des routes connectées)
-- [ ] Middleware `authorizeRoles` (`admin`, `manager`, `student`)
-- [ ] Middleware de vérification de propriété pour un responsable associatif (accès limité à son association)
+### 2. `@Antoninpampaloni` — Authentification, Droits & Back-office
+- [ ] Mettre en place la session (`express-session`) et le hash du mot de passe (`bcryptjs`) à l'inscription / connexion
+- [ ] Créer les routes et le contrôleur d'auth (`/register`, `/login`, `/logout`)
+- [ ] Créer les middlewares de sécurité (`src/middlewares/auth.ts`) :
+  - `requireAuth` : vérifie que l'utilisateur est connecté
+  - `requireRole` : vérifie si l'utilisateur est `admin` ou `manager`
+  - Vérification qu'un `manager` ne modifie que les données de sa propre association
+- [ ] Développer les vues et routes du Back-office (`src/views/backoffice/`) :
+  - Gestion des associations (création, modification, activation/désactivation)
+  - Gestion des événements (création, modification, suppression, publication)
+  - Page listant les étudiants inscrits à un événement
 
-## Jalon 4 : Back-end CRUD & Règles Métier
-- [ ] CRUD Utilisateurs (`src/controllers/user.controller.ts`, `src/routes/user.routes.ts`)
-- [ ] CRUD Associations (`src/controllers/association.controller.ts`, `src/routes/association.routes.ts`)
-- [ ] CRUD Événements (`src/controllers/event.controller.ts`, `src/routes/event.routes.ts`)
-- [ ] CRUD Inscriptions (`src/controllers/registration.controller.ts`, `src/routes/registration.routes.ts`)
-- [ ] Validation règle métier : empêcher la double inscription d'un même utilisateur à un événement
-- [ ] Validation règle métier : bloquer les inscriptions lorsque la capacité maximale est atteinte
-
-## Jalon 5 : Front-end Public & Espace Étudiant (EJS + Bootstrap)
-- [ ] Layout principal Front-end et barre de navigation dynamique (selon l'état de connexion)
-- [ ] Pages d'inscription et de connexion (`src/views/auth/`)
-- [ ] Page d'accueil et catalogue des associations (`src/views/front/`)
-- [ ] Catalogue des événements avec barre de recherche et filtres (catégorie, association, date)
-- [ ] Fiche détaillée d'un événement avec compteur de places et bouton d'inscription
-- [ ] Page « Mes inscriptions » avec possibilité d'annulation
-
-## Jalon 6 : Back-office (Administration & Responsables Associatifs)
-- [ ] Layout dédié Back-office (`src/views/layouts/`) séparé du front public
-- [ ] Tableau de bord Back-office
-- [ ] Interface de gestion des associations (création, édition, activation/désactivation)
-- [ ] Interface de gestion des événements (création, édition, suppression, publication)
-- [ ] Vue de consultation de la liste des inscrits par événement
-
-## Jalon 7 : Finitions, Tests & Présentation Finale
-- [ ] Vérification complète des parcours utilisateurs (Étudiant, Responsable associatif, Administrateur)
-- [ ] Revue de la qualité du code TypeScript et gestion des erreurs HTTP (404, 403, 500)
-- [ ] Finalisation de la documentation d'installation et d'utilisation (`README.md`)
-- [ ] Préparation de la présentation finale
+### 3. `@Justeunbrider83` — Front-end Public & Espace Étudiant (EJS + Bootstrap)
+- [ ] Créer le layout principal, le header (navbar dynamique connecté / non connecté) et le footer (`src/views/partials/`)
+- [ ] Créer les pages d'inscription et de connexion (`src/views/auth/`)
+- [ ] Créer la page d'accueil et la liste des associations actives (`src/views/front/`)
+- [ ] Créer la liste des événements avec formulaire de recherche / filtrage (par catégorie ou association)
+- [ ] Créer la page détail d'un événement (infos complètes, places restantes, bouton s'inscrire)
+- [ ] Créer la page « Mes inscriptions » pour l'étudiant (liste de ses événements + bouton annuler)
