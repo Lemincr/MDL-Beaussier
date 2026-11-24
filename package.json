@@ -4,7 +4,7 @@
   "description": "Application web dédiée à la vie associative et aux événements de l'école (MDL Beaussier)",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit"
@@ -45,6 +45,6 @@
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3"
   }
 }
