@@ -1,0 +1,47 @@
+{
+  "name": "mdl-beaussier",
+  "version": "1.0.0",
+  "description": "Application web dédiée à la vie associative et aux événements de l'école (MDL Beaussier)",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "express",
+    "mongodb",
+    "mongoose",
+    "ejs",
+    "bootstrap",
+    "mvc",
+    "associations",
+    "events"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "bootstrap": "^5.3.9",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^18.0.10",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.13.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/method-override": "^3.0.0",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
